@@ -34,4 +34,35 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const maestro = await Maestros.update(req.body, {
+      where: { idMaestro: req.params.id },
+    });
+    return res.status(200).json({
+      message: "Maestro actualizado correctamente",
+      data: maestro,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al actualizar maestro",
+      error: error.message,
+    });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const maestro = await Maestros.destroy({
+      where: { idMaestro: req.params.id },
+    });
+    return res.status(200).json({ message: "Maestro eliminado correctamente" });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al eliminar maestro",
+      error: error.message,
+    });
+  }
+});
+
 module.exports = router;
