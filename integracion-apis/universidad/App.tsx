@@ -1,19 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import AsignaturaComponent from './components/AsignaturaComponent';
-import MaestroComponent from './components/MaestroComponent';
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>Hola xd</Text>
       <StatusBar style="auto" />
-
-      <View style={styles.card}>
-        <AsignaturaComponent />
-      </View>
-      <View style={styles.card}>
-        <MaestroComponent />
-      </View>
     </View>
   );
 }
