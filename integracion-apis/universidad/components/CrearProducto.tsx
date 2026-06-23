@@ -13,7 +13,11 @@ import * as ImagePicker from "expo-image-picker";
 import { ProductoContext } from "../context/ProductoContext";
 import { Picker } from "@react-native-picker/picker";
 
-export default function CrearProducto() {
+interface Props {
+  verLista: () => void;
+}
+
+export default function CrearProducto({ verLista }: Props) {
   const { crearProducto } = useContext(ProductoContext);
 
   const [nombre, setNombre] = useState("");
@@ -115,7 +119,12 @@ export default function CrearProducto() {
         )}
       </TouchableOpacity>
       <TouchableOpacity onPress={guardarProducto}>
-        <Text style={styles.boton}>Guardar</Text>
+        <Text style={styles.botonGuardar}>Guardar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={verLista}
+      >
+        <Text style={styles.botonDetalles}>Ver Detalle Items</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -160,12 +169,21 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  boton: {
+  botonGuardar: {
     backgroundColor: "#253FCE",
     padding: 6,
     textAlign: "center",
-    color:"white",
+    color: "white",
     fontWeight: "bold",
-    borderRadius: 5
-  }
+    borderRadius: 5,
+  },
+  botonDetalles: {
+    marginTop: 12,
+    backgroundColor: "#21CE6E",
+    padding: 6,
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    borderRadius: 5,
+  },
 });
