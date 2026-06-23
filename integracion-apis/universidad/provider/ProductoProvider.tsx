@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ProductoContext } from "../context/ProductoContext";
 import { Producto } from "../modelos/Producto";
 
-const API = "http://TU_IP:5000";
+const API = "http://192.168.1.8:5000";
 
 interface Props {
   children: React.ReactNode;
@@ -29,7 +29,7 @@ export const ProductoProvider = ({ children }: Props) => {
         },
         body: JSON.stringify(producto),
       });
-      obtenerProductos();
+      await obtenerProductos();
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +40,7 @@ export const ProductoProvider = ({ children }: Props) => {
       await fetch(`${API}/items/${id}`, {
         method: "DELETE",
       });
-      obtenerProductos();
+      await obtenerProductos();
     } catch (error) {
       console.log(error);
     }
