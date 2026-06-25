@@ -1,18 +1,13 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/";
+const API_URL = "http://localhost:5000/api/graficos";
 
-export const getTotalProductos = async () => {
-  const response = await axios.get(`${API_URL}total-productos`);
+export const getPromedioProductosCategoria = async () => {
+  const response = await axios.get(`${API_URL}/promedio-productos-categoria`);
   return response.data;
 };
 
-export const getValorTotalProductosPorTipo = async () => {
-  const response = await axios.get(`${API_URL}valor-total-productos-por-tipo`);
+export const getProductosPorMarca = async () => {
+  const response = await axios.get(`${API_URL}/productos-por-marca`);
   return response.data;
 };
-
-export const getValorPromedioProductosPorCategoria = async () => {
-    const response = await axios.get(`${API_URL}valor-promedio-productos-por-categoria`);
-  return response.data;
-}
